@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="SM2024Projekt" />
+		<Option execution_dir="./" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/SM2024Projekt" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/SM2024Projekt" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="./SDL2/include" />
+		</Compiler>
+		<Linker>
+			<Add option="-static-libstdc++" />
+			<Add option="-static-libgcc" />
+			<Add option="-static" />
+			<Add option="-w -lSDL2 -lSDL2main -lSetupAPI -lole32 -lgdi32 -limagehlp -ldinput8 -ldxguid -ldxerr8 -luser32 -lwinmm -limm32 -loleaut32 -lshell32 -lversion" />
+			<Add library="mingw32" />
+			<Add library="SDL2main" />
+			<Add library="SDL2.dll" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add directory="./SDL2/lib" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="XCOPY .\SDL2\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
+		</ExtraCommands>
+		<Unit filename="SM2024BitConversion.cpp" />
+		<Unit filename="SM2024BitConversion.h" />
+		<Unit filename="SM2024ColorModels.cpp" />
+		<Unit filename="SM2024ColorModels.h" />
+		<Unit filename="SM2024ColorPalette.cpp" />
+		<Unit filename="SM2024ColorPalette.h" />
+		<Unit filename="SM2024CoreFunctions.cpp" />
+		<Unit filename="SM2024CoreFunctions.h" />
+		<Unit filename="SM2024Dithering.cpp" />
+		<Unit filename="SM2024Dithering.h" />
+		<Unit filename="SM2024HelperFunctions.cpp" />
+		<Unit filename="SM2024HelperFunctions.h" />
+		<Unit filename="SM2024KeyFunctions.cpp" />
+		<Unit filename="SM2024KeyFunctions.h" />
+		<Unit filename="SM2024Main.cpp" />
+		<Unit filename="SM2024MedianCut.cpp" />
+		<Unit filename="SM2024MedianCut.h" />
+		<Unit filename="SM2024Undersampling.cpp" />
+		<Unit filename="SM2024Undersampling.h" />
+		<Unit filename="SM2024Variables.cpp" />
+		<Unit filename="SM2024Variables.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
