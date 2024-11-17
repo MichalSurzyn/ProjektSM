@@ -164,20 +164,28 @@ void floydBW(){
 }
 
 void setDitheredRGB555(int xx, int yy, Uint8 r, Uint8 g, Uint8 b) {
+    int rozmiar = 4; // Rozmiar macierzy Bayera 4x4
+    int threshold = zaktualizawanaTablicaBayera4[yy % rozmiar][xx % rozmiar]; // Pobranie wartości z macierzy Bayera
 
-    int threshold = tablicaBayera4[xx % 2][yy % 2]; // Pobranie progu z tablicy
-    Uint8 r5 = (r >> 3) + threshold;       // Zastosowanie progu
-    Uint8 g5 = (g >> 3) + threshold;
-    Uint8 b5 = (b >> 3) + threshold;
+    // Kwantyzacja do RGB555 z zastosowaniem progu ditheringu
+    Uint8 r5 = (r >> 3); // Kwantyzacja koloru do 5 bitów
+    Uint8 g5 = (g >> 3);
+    Uint8 b5 = (b >> 3);
 
-    r5 = r5 > 31 ? 31 : r5; // Ograniczenie do zakresu 5-bitowego
+    // Zastosowanie ditheringu (próg decyduje o podniesieniu lub obniżeniu wartości bitu)
+    r5 = (r % 32 > threshold) ? r5 + 1 : r5;
+    g5 = (g % 32 > threshold) ? g5 + 1 : g5;
+    b5 = (b % 32 > threshold) ? b5 + 1 : b5;
+
+    // Ograniczenie wartości do zakresu 5-bitowego (0-31)
+    r5 = r5 > 31 ? 31 : r5;
     g5 = g5 > 31 ? 31 : g5;
     b5 = b5 > 31 ? 31 : b5;
 
     // Kodowanie w RGB555
     Uint16 rgb555 = (r5 << 10) | (g5 << 5) | b5;
 
-    // Przekonwertowanie na 24-bitowe kolory
+    // Rozszerzenie do pełnych 24-bitowych kolorów dla wyświetlania
     Uint8 r24 = r5 << 3;
     Uint8 g24 = g5 << 3;
     Uint8 b24 = b5 << 3;
