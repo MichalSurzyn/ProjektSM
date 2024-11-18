@@ -1,10 +1,11 @@
 #include <iostream>
+#include <vector>
+#include <fstream>
 
 #include "SM2024Variables.h"
 #include "SM2024KeyFunctions.h"
 #include "SM2024CoreFunctions.h"
 using namespace std;
-
 
 int main(int argc, char* argv[]) {
 
@@ -41,8 +42,47 @@ int main(int argc, char* argv[]) {
     return false;
     }
     SDL_UpdateWindowSurface(window);
+//
+/*
+    //tablica obrazek na uint8
+    vector<uint8_t>tablica;
 
+    for(int j=0;j<wysokosc/2;j++){
+        for(int i=0;i<szerokosc/2;i++){
+            SDL_Color kolor = getPixel(i, j);
+            //cout << "getPixel: (" << i << ", " << j << ") - R: " << (int)kolor.r << ", G: " << (int)kolor.g << ", B: " << (int)kolor.b << endl;
 
+            uint8_t szary = (kolor.r + kolor.g + kolor.b) / 3;
+            tablica.push_back(szary);
+        }
+    }
+
+    const char* nazwaPlikuWyjsciowego = "obrazek.byterun";
+    ByteRunKompresja(tablica.data(), tablica.size(), nazwaPlikuWyjsciowego);
+*/
+/*
+    // Sprawdzenie rozmiaru pliku wynikowego
+    int rozmiar = rozmiarPliku(nazwaPlikuWyjsciowego);
+    if (rozmiar != -1) {
+        cout << "Rozmiar pliku wynikowego: " << rozmiar << " bajtów" << endl;
+    }
+*/
+/*
+    // Wczytujemy i dekompresujemy dane
+    const char* nazwaPlikuWejsciowego = "obrazek.byterun";
+    vector<uint8_t> daneZdekompresowane = ByteRunDekompresja(nazwaPlikuWejsciowego);
+
+    if (daneZdekompresowane.empty()) {
+        cerr << "Blad: Brak danych zdekompresowanych!" << endl;
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return -1;
+    }
+
+    // Rysowanie obrazu
+    rysujObraz(daneZdekompresowane);
+*/
+//
     bool done = false;
     SDL_Event event;
     // g³ówna pêtla programu

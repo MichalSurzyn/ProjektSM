@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 #include "SM2024KeyFunctions.h"
 #include "SM2024Variables.h"
@@ -588,8 +589,31 @@ void FunkcjaZ(){    // HSL
     SDL_UpdateWindowSurface(window);
 }
 
-void FunkcjaX(){    // undersampling
-    calculateSubFilter();
+void FunkcjaX(){    // undersampling -> zapis obrazka uint8 po kompresji
+    //calculateSubFilter();
+
+    //tablica obrazek na uint8
+    vector<uint8_t>tablica;
+
+    for(int j=0;j<wysokosc/2;j++){
+        for(int i=0;i<szerokosc/2;i++){
+            SDL_Color kolor = getPixel(i, j);
+            //cout << "getPixel: (" << i << ", " << j << ") - R: " << (int)kolor.r << ", G: " << (int)kolor.g << ", B: " << (int)kolor.b << endl;
+
+            uint8_t szary = (kolor.r + kolor.g + kolor.b) / 3;
+            tablica.push_back(szary);
+        }
+    }
+
+    const char* nazwaPlikuWyjsciowego = "obrazek.byterun";
+    ByteRunKompresja(tablica.data(), tablica.size(), nazwaPlikuWyjsciowego);
+
+    // Sprawdzenie rozmiaru pliku wynikowego
+    int rozmiar = rozmiarPliku(nazwaPlikuWyjsciowego);
+    if (rozmiar != -1) {
+        cout << "Rozmiar pliku wynikowego: " << rozmiar << " bajtow" << endl;
+    }
+
     SDL_UpdateWindowSurface(window);
 }
 
