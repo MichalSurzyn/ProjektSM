@@ -11,6 +11,7 @@
 #include "SM2024Dithering.h"
 #include "SM2024ColorModels.h"
 #include "SM2024Undersampling.h"
+#include "SM2024ColorFiltering.h"
 
 using namespace std;
 
@@ -587,7 +588,7 @@ void FunkcjaZ(){    // HSL
     SDL_UpdateWindowSurface(window);
 }
 
-void FunkcjaX(){
+void FunkcjaX(){    // undersampling
     calculateSubFilter();
     SDL_UpdateWindowSurface(window);
 }
