@@ -3481,7 +3481,7 @@
 	<iostream>
 	"SM2024HelperFunctions.h"
 
-1731924579 source:c:\systemymultimedialne\projektsm\sm2024keyfunctions.cpp
+1731925485 source:c:\systemymultimedialne\projektsm\sm2024keyfunctions.cpp
 	<iostream>
 	<fstream>
 	"SM2024KeyFunctions.h"
@@ -3494,6 +3494,7 @@
 	"SM2024Dithering.h"
 	"SM2024ColorModels.h"
 	"SM2024Undersampling.h"
+	"SM2024ColorFiltering.h"
 
 1731372858 c:\systemymultimedialne\projektsm\sm2024keyfunctions.h
 
@@ -3502,7 +3503,7 @@
 
 1731372858 c:\systemymultimedialne\projektsm\sm2024dithering.h
 
-1731372858 c:\systemymultimedialne\projektsm\sm2024undersampling.h
+1731925708 c:\systemymultimedialne\projektsm\sm2024undersampling.h
 
 1731372858 source:c:\systemymultimedialne\projektsm\sm2024main.cpp
 	<iostream>
@@ -3525,4 +3526,12 @@
 
 1731372858 source:c:\systemymultimedialne\projektsm\sm2024variables.cpp
 	"SM2024Variables.h"
+
+1731925445 source:c:\systemymultimedialne\projektsm\sm2024colorfiltering.cpp
+	<SDL2/SDL.h>
+	"SM2024ColorFiltering.h"
+	"SM2024Variables.h"
+	"SM2024CoreFunctions.h"
+
+1731925371 c:\systemymultimedialne\projektsm\sm2024colorfiltering.h
 
