@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 #include "SM2024KeyFunctions.h"
 #include "SM2024Variables.h"
@@ -12,6 +13,7 @@
 #include "SM2024ColorModels.h"
 #include "SM2024Undersampling.h"
 #include "SM2024ColorFiltering.h"
+#include "SM2024Compression.h"
 
 using namespace std;
 
@@ -589,10 +591,18 @@ void FunkcjaZ(){    // HSL
 }
 
 void FunkcjaX(){    // undersampling
-    calculateSubFilter();
+    //calculateSubFilter();
     SDL_UpdateWindowSurface(window);
 }
 
-void FunkcjaC(){
+void FunkcjaC(){    // rle
+    int arraySize = 64000;
+    int myArray[arraySize];
+
+    fill_n(myArray, 64000, 5);
+
+    fileCompressionRLE(myArray, arraySize);
+    cout << endl;
+    //fileDecompressionRLE(myArray2, 2);
 
 }
